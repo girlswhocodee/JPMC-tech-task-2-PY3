@@ -16,6 +16,12 @@ interface IState {
  * It renders title, button and Graph react element.
  */
 class App extends Component<{}, IState> {
+  state: {
+    // data saves the server responds.
+    // We use this state to parse data down to the child element (Graph) as element property
+    data: never[]; showGraph: boolean;
+  };
+  setState: any;
   constructor(props: {}) {
     super(props);
 
@@ -43,7 +49,7 @@ class App extends Component<{}, IState> {
     let x = 0;
     const interval = setInterval(() => {
     DataStreamer.getData((serverResponds: ServerRespond[]) => {
-      this.setState {
+      this.setState({
         data: serverResponds,
         showGraph: true,
       });
