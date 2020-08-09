@@ -1,0 +1,80 @@
+From 5da22b82c6ef8592668a420a0d140dc2fe5607b1 Mon Sep 17 00:00:00 2001
+From: MariamY <myekini75@gmail.com>
+Date: Sun, 9 Aug 2020 02:28:43 -0400
+Subject: [PATCH] Create Patch File
+
+---
+ 0001-Updates.patch | 61 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+ create mode 100644 0001-Updates.patch
+
+diff --git a/0001-Updates.patch b/0001-Updates.patch
+new file mode 100644
+index 0000000..d73feba
+--- /dev/null
++++ b/0001-Updates.patch
+@@ -0,0 +1,61 @@
++From 5623cbb76f9f036c1cd723cde6e54c7074bc19ab Mon Sep 17 00:00:00 2001
++From: MariamY <myekini75@gmail.com>
++Date: Sun, 9 Aug 2020 02:25:19 -0400
++Subject: [PATCH] Updates
++
++---
++ src/App.tsx   | 8 +++++++-
++ src/Graph.tsx | 4 ++--
++ 2 files changed, 9 insertions(+), 3 deletions(-)
++
++diff --git a/src/App.tsx b/src/App.tsx
++index 4523ea4..2019602 100755
++--- a/src/App.tsx
+++++ b/src/App.tsx
++@@ -16,6 +16,12 @@ interface IState {
++  * It renders title, button and Graph react element.
++  */
++ class App extends Component<{}, IState> {
+++  state: {
+++    // data saves the server responds.
+++    // We use this state to parse data down to the child element (Graph) as element property
+++    data: never[]; showGraph: boolean;
+++  };
+++  setState: any;
++   constructor(props: {}) {
++     super(props);
++ 
++@@ -43,7 +49,7 @@ class App extends Component<{}, IState> {
++     let x = 0;
++     const interval = setInterval(() => {
++     DataStreamer.getData((serverResponds: ServerRespond[]) => {
++-      this.setState {
+++      this.setState({
++         data: serverResponds,
++         showGraph: true,
++       });
++diff --git a/src/Graph.tsx b/src/Graph.tsx
++index 7dcb7b3..04f43da 100644
++--- a/src/Graph.tsx
+++++ b/src/Graph.tsx
++@@ -14,7 +14,7 @@ interface IProps {
++  * Perspective library adds load to HTMLElement prototype.
++  * This interface acts as a wrapper for Typescript compiler.
++  */
++-interface PerspectiveViewerElement extends HTMLElement{
+++interface PerspectiveViewerElement extends HTMLElement {
++   load: (table: Table) => void,
++ }
++ 
++@@ -32,7 +32,7 @@ class Graph extends Component<IProps, {}> {
++ 
++   componentDidMount() {
++     // Get element to attach the table from the DOM.
++-    const elem: PerspectiveViewerElement = document.getElementsByTagName('perspective-viewer')[0] as unknown as PerspectiveViewerElement;
+++    const elem: = document.getElementsByTagName('perspective-viewer')[0] as unknown as PerspectiveViewerElement;
++ 
++     const schema = {
++       stock: 'string',
++-- 
++2.24.3 (Apple Git-128)
++
+-- 
+2.24.3 (Apple Git-128)
+
